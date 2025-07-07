@@ -1,147 +1,770 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Blender Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allan Monforte - Multimedia Portfolio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      background-color: #f9f9f9;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: #e0e0e0;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    h1, h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .section-title {
-      margin-top: 50px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #333;
-      display: inline-block;
-      padding-bottom: 4px;
-    }
-
-    .video-card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.2s;
-    }
-
-    .video-card:hover {
-      transform: scale(1.02);
-    }
-
-    video {
+    /* Milky Way Stars Animation */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: auto;
+      height: 100%;
+      background: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+      background-repeat: repeat;
+      background-size: 200px 100px;
+      animation: sparkle 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes sparkle {
+      from { transform: translateX(0); }
+      to { transform: translateX(200px); }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 15, 35, 0.9);
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+      padding: 1rem 0;
+      box-shadow: 0 2px 30px rgba(139, 69, 199, 0.3);
+      border-bottom: 1px solid rgba(139, 69, 199, 0.2);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #667eea;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem 2rem;
+    }
+
+    /* Page sections */
+    .page {
+      display: none;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .page.active {
       display: block;
     }
 
-    .card-title {
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Home Page */
+    .hero {
+      text-align: center;
+      background: rgba(15, 15, 35, 0.8);
+      backdrop-filter: blur(20px);
+      padding: 3rem;
+      border-radius: 20px;
+      margin-bottom: 3rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(139, 69, 199, 0.2);
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(139, 69, 199, 0.1), transparent 50%),
+                  radial-gradient(circle at 70% 80%, rgba(79, 172, 254, 0.1), transparent 50%);
+      border-radius: 20px;
+      z-index: -1;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(45deg, #8b45c7, #4facfe, #c471ed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(139, 69, 199, 0.5);
+    }
+
+    .hero .subtitle {
+      font-size: 1.2rem;
+      color: #c471ed;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .hero .course {
       font-size: 1.1rem;
-      padding: 0.5rem 1rem;
+      color: #8b9dc3;
+      margin-bottom: 2rem;
+    }
+
+    .hero p {
+      color: #b8b8b8;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .portfolio-card {
+      background: rgba(15, 15, 35, 0.7);
+      backdrop-filter: blur(20px);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(139, 69, 199, 0.2);
+      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(139, 69, 199, 0.1), transparent);
+      transition: left 0.5s;
+    }
+
+    .portfolio-card:hover::before {
+      left: 100%;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(139, 69, 199, 0.2);
+      border-color: rgba(139, 69, 199, 0.4);
+    }
+
+    .portfolio-card i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #8b45c7, #4facfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .portfolio-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .portfolio-card p {
+      color: #b8b8b8;
+      line-height: 1.6;
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #8b45c7, #4facfe, #c471ed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(139, 69, 199, 0.3);
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      color: #b8b8b8;
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .video-card .card-info {
+      padding: 1rem;
+    }
+
+    .video-card .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .video-card .card-description {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Final Video Card */
+    .final-video {
+      grid-column: 1 / -1;
+      max-width: 600px;
+      margin: 2rem auto 0;
+    }
+
+    .final-video .video-card {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+
+    .final-video .card-title {
+      color: white;
+      font-size: 1.3rem;
+    }
+
+    .final-video .card-description {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Planet Age Calculator */
+    .calculator {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .calculator h3 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    .calculator-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .calculator-form input {
+      padding: 0.8rem 1rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 120px;
+    }
+
+    .calculator-form button {
+      padding: 0.8rem 2rem;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .calculator-form button:hover {
+      transform: translateY(-2px);
+    }
+
+    .age-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .age-card {
+      background: #f8f9fa;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      border: 2px solid #e9ecef;
+    }
+
+    .age-card.highlight {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+    }
+
+    .age-card h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .age-card .age-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .age-card.highlight .age-value {
+      color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 5rem 1rem 1rem;
+      }
+
+      .calculator-form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .calculator-form input,
+      .calculator-form button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Allan Monforte</div>
+      <ul class="nav-links">
+        <li><a href="#home" onclick="showPage('home')" class="active">Home</a></li>
+        <li><a href="#rotoscope" onclick="showPage('rotoscope')">Rotoscope</a></li>
+        <li><a href="#blender" onclick="showPage('blender')">Blender</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <div class="container py-5">
-    <h1 class="mb-5">🌠 My Blender Portfolio</h1>
-
-    <!-- PLANETS SECTION -->
-    <h2 class="section-title">🪐 Individual Planet Animations</h2>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-      <div class="col">
-        <div class="video-card">
-          <video controls src="videos/planets/mercury.mp4"></video>
-          <div class="card-title">Mercury</div>
-        </div>
+  <div class="container">
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+      <div class="hero">
+        <h1>Allan Monforte</h1>
+        <div class="subtitle">BSIT-NS-2A</div>
+        <div class="course">Multi Media Authoring</div>
+        <p>Welcome to my multimedia portfolio showcasing rotoscope animation and 3D Blender projects</p>
       </div>
 
-      <div class="col">
-        <div class="video-card">
-          <video controls src="videos/planets/venus.mp4"></video>
-          <div class="card-title">Venus</div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card" onclick="showPage('rotoscope')">
+          <i class="fas fa-film"></i>
+          <h3>Rotoscope Animation</h3>
+          <p>12 weeks of rotoscope progress featuring 5-second clips and a final 1-minute masterpiece</p>
+        </div>
+        <div class="portfolio-card" onclick="showPage('blender')">
+          <i class="fas fa-globe"></i>
+          <h3>Blender Solar System</h3>
+          <p>Complete solar system with planetary age calculator and animated 3D models</p>
         </div>
       </div>
-
-      <div class="col">
-        <div class="video-card">
-          <video controls src="videos/planets/earth.mp4"></video>
-          <div class="card-title">Earth</div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="video-card">
-          <video controls src="videos/planets/mars.mp4"></video>
-          <div class="card-title">Mars</div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="video-card">
-          <video controls src="videos/planets/jupiter.mp4"></video>
-          <div class="card-title">Jupiter</div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="video-card">
-          <video controls src="videos/planets/saturn.mp4"></video>
-          <div class="card-title">Saturn</div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="video-card">
-          <video controls src="videos/planets/uranus.mp4"></video>
-          <div class="card-title">Uranus</div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="video-card">
-          <video controls src="videos/planets/neptune.mp4"></video>
-          <div class="card-title">Neptune</div>
-        </div>
-      </div>
-
     </div>
 
-    <!-- ROTOSECTION -->
-    <h2 class="section-title mt-5">🎞️ Rotoscope Progress (Week 1–12)</h2>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <!-- ROTOSCOPE PAGE -->
+    <div id="rotoscope" class="page">
+      <div class="section-header">
+        <h2><i class="fas fa-film"></i> Rotoscope Progress</h2>
+        <p>12 weeks of rotoscope animation development</p>
+      </div>
 
-      <!-- Repeat Week Cards 1–12 -->
-      <!-- You can auto-generate this in PHP or JS if dynamic -->
-      <!-- Static version below -->
-      <!-- You can update the video filenames accordingly -->
+      <!-- Featured Final Video -->
+      <div class="final-video" style="margin-bottom: 3rem;">
+        <div class="video-card">
+          <video controls src="videos/rotoscope/final.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">🎬 Final Rotoscope Project</div>
+            <div class="card-description">Complete 1-minute rotoscope animation showcasing all techniques learned</div>
+          </div>
+        </div>
+      </div>
 
-      <!-- Weeks 1-6 -->
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week1.mp4"></video><div class="card-title">Week 1</div></div></div>
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week2.mp4"></video><div class="card-title">Week 2</div></div></div>
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week3.mp4"></video><div class="card-title">Week 3</div></div></div>
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week4.mp4"></video><div class="card-title">Week 4</div></div></div>
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week5.mp4"></video><div class="card-title">Week 5</div></div></div>
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week6.mp4"></video><div class="card-title">Week 6</div></div></div>
+      <div class="section-header">
+        <h2>Weekly Progress</h2>
+        <p>Step-by-step development over 12 weeks</p>
+      </div>
 
-      <!-- Weeks 7-12 -->
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week7.mp4"></video><div class="card-title">Week 7</div></div></div>
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week8.mp4"></video><div class="card-title">Week 8</div></div></div>
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week9.mp4"></video><div class="card-title">Week 9</div></div></div>
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week10.mp4"></video><div class="card-title">Week 10</div></div></div>
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week11.mp4"></video><div class="card-title">Week 11</div></div></div>
-      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week12.mp4"></video><div class="card-title">Week 12</div></div></div>
+      <div class="video-grid">
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week1.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 1</div>
+            <div class="card-description">Introduction to rotoscoping basics</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week2.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 2</div>
+            <div class="card-description">Frame-by-frame techniques</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week3.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 3</div>
+            <div class="card-description">Motion tracking fundamentals</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week4.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 4</div>
+            <div class="card-description">Advanced masking techniques</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week5.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 5</div>
+            <div class="card-description">Color correction and grading</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week6.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 6</div>
+            <div class="card-description">Complex motion sequences</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week7.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 7</div>
+            <div class="card-description">Character animation refinement</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week8.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 8</div>
+            <div class="card-description">Background integration</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week9.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 9</div>
+            <div class="card-description">Visual effects enhancement</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week10.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 10</div>
+            <div class="card-description">Audio synchronization</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week11.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 11</div>
+            <div class="card-description">Final polish and details</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/rotoscope/week12.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Week 12</div>
+            <div class="card-description">Project completion</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- BLENDER PAGE -->
+    <div id="blender" class="page">
+      <div class="section-header">
+        <h2><i class="fas fa-globe"></i> Blender Solar System</h2>
+        <p>Interactive planetary age calculator and 3D animations</p>
+      </div>
+
+      <!-- Age Calculator -->
+      <div class="calculator">
+        <h3>🎂 Planetary Age Calculator</h3>
+        <div class="calculator-form">
+          <input type="number" id="ageInput" placeholder="Enter your age" min="1" max="120">
+          <button onclick="calculateAges()">Calculate My Age on Other Planets</button>
+        </div>
+        <div class="age-results" id="ageResults"></div>
+      </div>
+
+      <!-- Featured Complete Solar System Video -->
+      <div class="final-video" style="margin-bottom: 3rem;">
+        <div class="video-card">
+          <video controls src="videos/planets/solar_system.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">🌌 Complete Solar System</div>
+            <div class="card-description">Full solar system animation with all planets in motion</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <h2>Individual Celestial Bodies</h2>
+        <p>Detailed animations of each planet, moon, and sun</p>
+      </div>
+
+      <!-- Planet Videos -->
+      <div class="video-grid">
+        <div class="video-card">
+          <video controls src="videos/planets/mercury.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Mercury</div>
+            <div class="card-description">Closest planet to the Sun</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/planets/venus.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Venus</div>
+            <div class="card-description">Hottest planet in our solar system</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/planets/earth.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Earth</div>
+            <div class="card-description">Our home planet</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/planets/mars.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Mars</div>
+            <div class="card-description">The Red Planet</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/planets/jupiter.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Jupiter</div>
+            <div class="card-description">Largest planet in our solar system</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/planets/saturn.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Saturn</div>
+            <div class="card-description">Famous for its beautiful rings</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/planets/uranus.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Uranus</div>
+            <div class="card-description">Ice giant rotating on its side</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/planets/neptune.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Neptune</div>
+            <div class="card-description">Windiest planet in our solar system</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/planets/pluto.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Pluto</div>
+            <div class="card-description">Dwarf planet in the Kuiper Belt</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/planets/moon.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Moon</div>
+            <div class="card-description">Earth's natural satellite</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <video controls src="videos/planets/sun.mp4"></video>
+          <div class="card-info">
+            <div class="card-title">Sun</div>
+            <div class="card-description">Our star and center of the solar system</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
+  <script>
+    // Navigation functionality
+    function showPage(pageId) {
+      // Hide all pages
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      
+      // Show selected page
+      document.getElementById(pageId).classList.add('active');
+      
+      // Update navigation
+      const navLinks = document.querySelectorAll('.nav-links a');
+      navLinks.forEach(link => link.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    // Planetary age calculator
+    function calculateAges() {
+      const age = parseInt(document.getElementById('ageInput').value);
+      if (!age || age <= 0) {
+        alert('Please enter a valid age!');
+        return;
+      }
+
+      // Orbital periods in Earth years
+      const planets = [
+        { name: 'Mercury', period: 0.24, icon: '☿️' },
+        { name: 'Venus', period: 0.62, icon: '♀️' },
+        { name: 'Earth', period: 1.0, icon: '🌍' },
+        { name: 'Mars', period: 1.88, icon: '♂️' },
+        { name: 'Jupiter', period: 11.86, icon: '♃' },
+        { name: 'Saturn', period: 29.46, icon: '♄' },
+        { name: 'Uranus', period: 84.01, icon: '⛢' },
+        { name: 'Neptune', period: 164.8, icon: '♆' },
+        { name: 'Pluto', period: 248.1, icon: '♇' },
+        { name: 'Moon', period: 0.077, icon: '🌙' },
+        { name: 'Sun', period: 0.0, icon: '☀️' }
+      ];
+
+      const resultsDiv = document.getElementById('ageResults');
+      resultsDiv.innerHTML = '';
+
+      planets.forEach(planet => {
+        let calculatedAge;
+        let ageText;
+        
+        if (planet.name === 'Sun') {
+          // For the Sun, we'll show age in solar cycles (approximately 11 years)
+          calculatedAge = (age / 11).toFixed(1);
+          ageText = `${calculatedAge} solar cycles`;
+        } else {
+          calculatedAge = (age / planet.period).toFixed(1);
+          ageText = `${calculatedAge} years`;
+        }
+
+        const ageCard = document.createElement('div');
+        ageCard.className = 'age-card';
+        if (planet.name === 'Earth') {
+          ageCard.classList.add('highlight');
+        }
+        
+        ageCard.innerHTML = `
+          <h4>${planet.icon} ${planet.name}</h4>
+          <div class="age-value">${ageText}</div>
+        `;
+        
+        resultsDiv.appendChild(ageCard);
+      });
+    }
+
+    // Add some interactivity
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for navigation
+      const navLinks = document.querySelectorAll('.nav-links a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+        });
+      });
+    });
+  </script>
 </body>
 </html>
