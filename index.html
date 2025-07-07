@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Blender Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #333;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .video-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container py-5">
+    <h1 class="mb-5">🌠 My Blender Portfolio</h1>
+
+    <!-- PLANETS SECTION -->
+    <h2 class="section-title">🪐 Individual Planet Animations</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+      <div class="col">
+        <div class="video-card">
+          <video controls src="videos/planets/mercury.mp4"></video>
+          <div class="card-title">Mercury</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="video-card">
+          <video controls src="videos/planets/venus.mp4"></video>
+          <div class="card-title">Venus</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="video-card">
+          <video controls src="videos/planets/earth.mp4"></video>
+          <div class="card-title">Earth</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="video-card">
+          <video controls src="videos/planets/mars.mp4"></video>
+          <div class="card-title">Mars</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="video-card">
+          <video controls src="videos/planets/jupiter.mp4"></video>
+          <div class="card-title">Jupiter</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="video-card">
+          <video controls src="videos/planets/saturn.mp4"></video>
+          <div class="card-title">Saturn</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="video-card">
+          <video controls src="videos/planets/uranus.mp4"></video>
+          <div class="card-title">Uranus</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="video-card">
+          <video controls src="videos/planets/neptune.mp4"></video>
+          <div class="card-title">Neptune</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ROTOSECTION -->
+    <h2 class="section-title mt-5">🎞️ Rotoscope Progress (Week 1–12)</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+      <!-- Repeat Week Cards 1–12 -->
+      <!-- You can auto-generate this in PHP or JS if dynamic -->
+      <!-- Static version below -->
+      <!-- You can update the video filenames accordingly -->
+
+      <!-- Weeks 1-6 -->
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week1.mp4"></video><div class="card-title">Week 1</div></div></div>
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week2.mp4"></video><div class="card-title">Week 2</div></div></div>
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week3.mp4"></video><div class="card-title">Week 3</div></div></div>
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week4.mp4"></video><div class="card-title">Week 4</div></div></div>
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week5.mp4"></video><div class="card-title">Week 5</div></div></div>
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week6.mp4"></video><div class="card-title">Week 6</div></div></div>
+
+      <!-- Weeks 7-12 -->
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week7.mp4"></video><div class="card-title">Week 7</div></div></div>
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week8.mp4"></video><div class="card-title">Week 8</div></div></div>
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week9.mp4"></video><div class="card-title">Week 9</div></div></div>
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week10.mp4"></video><div class="card-title">Week 10</div></div></div>
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week11.mp4"></video><div class="card-title">Week 11</div></div></div>
+      <div class="col"><div class="video-card"><video controls src="videos/rotoscope/week12.mp4"></video><div class="card-title">Week 12</div></div></div>
+
+    </div>
+  </div>
+
+</body>
+</html>
